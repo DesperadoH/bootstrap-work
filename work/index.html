@@ -59,7 +59,7 @@
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 <div class="container-fluid">
 <div class="navbar-header">
-<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#demo-navbar">
 <span class="sr-only">Toggle navigation</span>
 <span class="icon-bar"></span>
 <span class="icon-bar"></span>
@@ -68,19 +68,19 @@
 <a class="navbar-brand" href="#">现代浏览器博物馆</a>
 </div>
 
-<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+<div class="collapse navbar-collapse" id="demo-navbar">
 <ul class="nav navbar-nav">
 <li class="active"><a href="#">综述</a></li>
 <li><a href="#">简述</a></li>
 <li class="dropdown">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown">特点<span class="caret"></span></a>
-    <!--下拉菜单：可以仅仅通过data属性API就能使用所有的Bootstrap插件，无需写一行js代码。这是Bootstrap中的一等API，也应该是首选方式><!-->
+    <!--下拉菜单：可以仅仅通过data属性API就能使用所有的Bootstrap插件，无需写一行js代码。这是Bootstrap中的一等API，也应该是首选方式-->
 
     <ul class="dropdown-menu" role="menu">
-      <li><a href="#">Chrome</a></li> 
-      <li><a href="#">Firefox</a></li> 
-      <li><a href="#">Opera</a></li>  
-      <li><a href="#">Safari</a></li> 
+      <li><a href="#tab-chrome">Chrome</a></li> 
+      <li><a href="#tab-firefox">Firefox</a></li> 
+       
+      <li><a href="#tab-safari">Safari</a></li> 
       <li class="divider"></li> 
       <li><a href="#">IE</a></li>   
     </ul>
@@ -97,6 +97,7 @@
 </div>
 </div>
 </nav>
+
  <!--Carousel是一个用于轮播内容的组件-->       
 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
@@ -134,19 +135,19 @@
 <div class="container">
     <div class="row">
         <div class="col-md-4 text-center">
-            <img src="firefox.jpg" alt="">
+            <img src="imgs/firefox.jpg" alt="">
             <h2>Firefox</h2>
             <p>Mozilla Firefox，中文俗称“火狐”，是一个自由及开放源代码网页浏览器。</p>
             <p><a href="#" class="btn btn-default" role="button">点我下载</a></p>
         </div>
         <div class="col-md-4 text-center">
-            <img src="chrome.jpg" alt="">
+            <img src="imgs/chrome.jpg" alt="">
             <h2>Chrome</h2>
             <p>Google Chrome，又称Google浏览器，是一个由Google公司开发的网页浏览器。</p>
             <p><a href="#" class="btn btn-default" role="button">点我下载</a></p>
         </div>
         <div class="col-md-4 text-center">
-            <img src="safari.png" alt="">
+            <img src="imgs/safari.jpg" alt="">
             <h2>Safari</h2>
             <p>Safari,苹果计算机的最新操作系统Mac OS X中新的浏览器。</p>
             <p><a href="#" class="btn btn-default" role="button">点我下载</a></p>
@@ -158,10 +159,10 @@
 <!--列表-->
 
 <div class="container">
-<ul class="nav nav-tabs" role="tablist">
-    <li class="active"><a href="#tab-firefox" role="tab" data-toggle="tab">firefox</a></li>
-    <li><a href="#tab-chrome" role="tab" data-toggle="tab">chrome</a></li>
-    <li><a href="#tab-safari" role="tab" data-toggle="tab">safari</a></li>
+<ul class="nav nav-tabs" role="tablist" id="tab-list">
+    <li class="active"><a href="#tab-firefox" role="tab" data-toggle="tab">Firefox</a></li>
+    <li><a href="#tab-chrome" role="tab" data-toggle="tab">Chrome</a></li>
+    <li><a href="#tab-safari" role="tab" data-toggle="tab">Safari</a></li>
 </ul>
 
 
@@ -178,7 +179,7 @@
              </p>
          </div>
          <div class="col-md-5">
-         <img src="firefox.jpg" alt="">
+         <img src="imgs/firefox.jpg" alt="">
          </div>
       </div>   
     </div>
@@ -191,7 +192,7 @@
          </p>
          </div>
          <div class="col-md-5">
-           <img src="chrome.jpg" alt="">
+           <img src="imgs/chrome.jpg" alt="">
          </div>
         </div>
     </div>
@@ -203,7 +204,7 @@
           </p>
         </div>
         <div class="col-md-5">
-        <img src="Safari.jpg" alt="">
+        <img src="imgs/safari.jpg" alt="">
         </div>
        </div>      
     </div>
@@ -250,9 +251,26 @@
 
 
 
-<!--弹出框-->
+<!--弹出框
+ $(document).ready(function(){
+        $("#demo-navbar .dropdown-menu a").click(function(){
+            var href=$(this).attr('href');
+            $("#tab-list a[href='"+href+"']").tab("show");
+        })
+    });
+
+
+-->
 
 <script src="js/jquery-1.11.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
+<script>
+   $(function(){
+    $("#demo-navbar .dropdown-menu a").click(function(){
+        var href=$(this).attr("href");
+        $("#tab-list a[href='"+href+"']").tab("show");
+    })
+   })
+</script>
     </body>
 </html>
